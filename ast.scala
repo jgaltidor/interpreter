@@ -4,7 +4,7 @@ import ExceptionUtils._
 
 /* Expressions */
 sealed trait Expr extends Positional {
-	var etype: Type = null
+  var etype: Type = null
 }
 
 trait Value extends Expr
@@ -23,8 +23,8 @@ case class Func(name: String, v : Var, inType : Type, outType:Type,
 case class Call(funcVar: Var, e: Expr) extends Expr
 
 /** Class to represent a function value that can be applied
-	* to an expression
-	*/
+  * to an expression
+  */
 case class FuncVal(argVar: Var, funcDef: Expr) extends Value
 
 // products
@@ -44,41 +44,41 @@ case object RightProj extends ProjIndex
   * domainType.
   */
 abstract class DomainExpr(var domainType : Type) extends Expr {
-	def this() = this(null)
+  def this() = this(null)
 }
 case class Abort(domType : Type, e : Expr)
-	extends DomainExpr(domType)
+  extends DomainExpr(domType)
 case class AbortVal(override val domType : Type, v : Value)
-	extends Abort(domType, v) with Value
+  extends Abort(domType, v) with Value
 case class InExpr(index : ProjIndex, e : Expr) extends DomainExpr
 case class InVal(override val index : ProjIndex, v : Value)
-	extends InExpr(index, v) with Value
+  extends InExpr(index, v) with Value
 case class Case(cond: Expr, v1 : Var, body1 : Expr,
                 v2: Var, body2 : Expr) extends Expr
 // patterns
 trait Pattern extends Positional
 case class Rule(vars: List[Var], pat: Pattern, exp : Expr) extends Positional
 case class PairPattern(p1 : Pattern, p2 : Pattern)
-	extends Pattern
+  extends Pattern
 case class InPattern(index : ProjIndex, p : Pattern)
-	extends Pattern
+  extends Pattern
 case object WildPattern extends Pattern
 case class MatchExpr(exp: Expr, rules: List[Rule]) extends Expr
 
 // failures
 trait ErrorVal extends Value {
-	def errMsg():String
+  def errMsg():String
 }
 trait Failure extends ErrorVal
 trait ExcVal extends ErrorVal
 
 case class FailVal() extends Failure {
-	override def errMsg():String = defaultErrorValMsg(this, "Unhandled failure")
+  override def errMsg():String = defaultErrorValMsg(this, "Unhandled failure")
 }
 
 case class MatchFailure(m: MatchExpr, mval: Value) extends Failure {
-	override def errMsg():String = defaultErrorValMsg(m,
-		"No rule matched value " + mval + " for match expression")
+  override def errMsg():String = defaultErrorValMsg(m,
+    "No rule matched value " + mval + " for match expression")
 }
 
 case class CatchExpr(tryExp: Expr, handleExp:Expr) extends Expr
@@ -92,14 +92,14 @@ case class ExcCode(e:Expr) extends Expr
 
 // exception values
 case class ExcMsgVal(override val v: Value) extends InVal(LeftProj, v) with ExcVal {
-	override def errMsg():String = v match {
-		case Str(s) => defaultErrorValMsg(this, "Message Exception: " + s)
-	}
+  override def errMsg():String = v match {
+    case Str(s) => defaultErrorValMsg(this, "Message Exception: " + s)
+  }
 }
 case class ExcCodeVal(override val v: Value) extends InVal(RightProj, v) with ExcVal {
-	override def errMsg():String = v match {
-		case Num(n) => defaultErrorValMsg(this, "Error Code Exception: " + n)
-	}
+  override def errMsg():String = v match {
+    case Num(n) => defaultErrorValMsg(this, "Error Code Exception: " + n)
+  }
 }
 
 // continuations
@@ -129,13 +129,13 @@ case class ContinuationType(val t: Type) extends Type
 
 object ExprTester {
 
-	def main(args: Array[String]) {
+  def main(args: Array[String]) {
     println("Hello, world!")
     val s = "blah"
     s match {
-    	case "what" => println("dammit")
-    	case "blah" => println("yes!!!")
-    	case _ => println("OK")
+      case "what" => println("dammit")
+      case "blah" => println("yes!!!")
+      case _ => println("OK")
     }
     val n = new Num(5) 
     println("n: " + n)
@@ -143,5 +143,5 @@ object ExprTester {
     print("p: " + p)
     if(p.isInstanceOf[Pair]) { println("p is a pair") }
     if(p.isInstanceOf[Value]) { println("p is a value") }
-	}
+  }
 }
