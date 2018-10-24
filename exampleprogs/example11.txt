@@ -1,0 +1,4 @@
+let x be in[r]("5") in 
+   case x {in[l](y) => abort(num, y)
+          | in[r](z) => |z|*2}
+

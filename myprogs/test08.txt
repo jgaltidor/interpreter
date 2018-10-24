@@ -1,0 +1,5 @@
+let w be 5 in
+fun cat (x:str+str):str = 
+     match x {y.in[r](y) => y ^ cat(in[l](y))
+             |z.in[r](z) => z ^ "goodbye"}
+        in cat(in[l]("hello"))

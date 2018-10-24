@@ -1,0 +1,1 @@
+case in[l](5) { in[l](x) => x*2 | in[r](y) => y*y }

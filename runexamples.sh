@@ -1,0 +1,2 @@
+./runnew.sh
+./runold.sh

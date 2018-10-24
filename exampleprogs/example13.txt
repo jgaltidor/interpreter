@@ -1,0 +1,4 @@
+let x be <in[l](<>),2> in 
+   match x{y.<in[l](<>),y> => y+y
+          |z.<in[r](<>),z> => z*z}
+

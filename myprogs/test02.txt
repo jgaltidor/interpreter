@@ -1,0 +1,7 @@
+fun addOrMult(val : num+str):num =
+	case val {
+		in[l](n) => n+n |
+		in[r](s) => |s^s|
+	}
+in
+addOrMult(in[r]("x" ^ "yz")) + addOrMult(in[l](4+|"aa"|))

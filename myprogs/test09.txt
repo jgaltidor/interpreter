@@ -1,0 +1,1 @@
+match in[l](5) { y.in[r](y) => y*y | z.in[r](z) => z ^ "goodbye" }

@@ -1,0 +1,5 @@
+fun c (x:void+str):num = 
+     match x { y,z.in[r](z) => |z| + |z|
+             }
+        in
+   c(in[r]("hello"))

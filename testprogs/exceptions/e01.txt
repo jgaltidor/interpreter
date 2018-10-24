@@ -1,0 +1,12 @@
+try raise(errmsg("exc"))
+ow exc1 =>
+  let msgLength be
+    match exc1 { msg.in[l](msg) => |msg| }
+  in
+    try raise(errcode(msgLength))
+    ow exc2 =>
+      let msgLenSquared be
+        match exc2 { code.in[r](code) => code*code }
+      in
+        msgLenSquared
+

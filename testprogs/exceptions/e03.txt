@@ -1,0 +1,10 @@
+try
+  2 + raise(errmsg("woo hoo"))
+ow x =>
+  try
+    raise(errmsg("yippee"))
+  ow z =>
+    try
+      raise(errcode(4))
+    ow x =>
+      match x { y.in[r](y) => y * | match z { w.in[l](w) => w } | }

@@ -1,0 +1,4 @@
+"someone said: " ^ let y be "ha ha ha" in
+  try
+    "whatever" ^ raise(errmsg("woo hoo"))
+  ow x => match x { msg.in[l](msg) => msg ^ " " ^ y }

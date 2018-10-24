@@ -1,0 +1,11 @@
+let w be 2
+  in w + 2*letcc progpoint in
+    let s be "yes!!!"
+      in 
+        fun cat (x:str+str):num = 
+          match x { y.in[l](y) => cat(in[r](y))
+                  | z.in[r](z) => | z ^ throw |z| to progpoint |
+                  }
+        in
+          cat(in[l](s))
+

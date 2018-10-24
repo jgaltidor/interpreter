@@ -1,0 +1,4 @@
+fun len (x:str):num = |x| in
+    let h be "hello" ^ " " ^ "world" in 
+       len(h) + 10
+
